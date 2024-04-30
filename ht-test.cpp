@@ -19,7 +19,7 @@ int main()
 
     // This is just arbitrary code. Change it to test whatever you like about your 
     // hash table implementation.
-    for(size_t i = 0; i < 10; i++){
+    for(size_t i = 0; i < 138; i++){
         std::stringstream ss;
         ss << "hi" << i;
         ht.insert({ss.str(), i});

@@ -46,16 +46,10 @@ struct MyStringHash {
             }
         }
         HASH_INDEX_T out=0;
-        //convert to decimal
+        //convert to decimal and add to output
         for(int i=0;i<5;i++){
-            //w[i] += ((((((kArray[i*6])*36+kArray[i*6+1])*36+kArray[i*6+2])*36+kArray[i*6+3])*36+kArray[i*6+4])*36+kArray[i*6+5]);
             out += ((((((kArray[i*6])*36+kArray[i*6+1])*36+kArray[i*6+2])*36+kArray[i*6+3])*36+kArray[i*6+4])*36+kArray[i*6+5]) *rValues[i];
         }
-        
-        /*
-        for(int i=0;i<5;i++){
-            out += w[i]*rValues[i];
-        }*/
         return out;
     }
 
