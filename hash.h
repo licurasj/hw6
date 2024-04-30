@@ -21,14 +21,42 @@ struct MyStringHash {
     {
         // Add your code here
 
+        //convert string to vector of ints
+        std::vector<int> kArray;
+        //unsigned long long* w[5] ={0};
+        size_t it=0;
+        for(size_t i = 0 ; i<30; i++){
+            if(i< (30-k.size())){
+                kArray.push_back(0);
+            }
+            else if(it!=k.size()){
+                char temp = k[it];
+                if(temp>'9'&& temp < 'a'){
+                    temp = tolower(temp);
+                }
 
-    }
-
-    // A likely helper function is to convert a-z,0-9 to an integral value 0-35
-    HASH_INDEX_T letterDigitToNumber(char letter) const
-    {
-        // Add code here or delete this helper function if you do not want it
-
+                if(temp<'a'){
+                    temp -= 22;
+                }
+                else if(temp >'9'){
+                    temp -= 97;
+                }
+                kArray.push_back(temp);
+                it++;
+            }
+        }
+        HASH_INDEX_T out=0;
+        //convert to decimal
+        for(int i=0;i<5;i++){
+            //w[i] += ((((((kArray[i*6])*36+kArray[i*6+1])*36+kArray[i*6+2])*36+kArray[i*6+3])*36+kArray[i*6+4])*36+kArray[i*6+5]);
+            out += ((((((kArray[i*6])*36+kArray[i*6+1])*36+kArray[i*6+2])*36+kArray[i*6+3])*36+kArray[i*6+4])*36+kArray[i*6+5]) *rValues[i];
+        }
+        
+        /*
+        for(int i=0;i<5;i++){
+            out += w[i]*rValues[i];
+        }*/
+        return out;
     }
 
     // Code to generate the random R values
