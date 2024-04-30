@@ -444,7 +444,9 @@ void HashTable<K,V,Prober,Hash,KEqual>::resize()
     std::cout << "capacity:" << CAPACITIES[mIndex_] << std::endl;
     std::vector<HashItem*> temp = table_;
     table_.clear();
-    table_.reserve(CAPACITIES[mIndex_]);
+    for(size_t i=0; i<CAPACITIES[mIndex_];i++){
+        table_.push_back(nullptr);
+    }
     for(size_t i=0; i<temp.size();i++){
         if(temp[i]!=nullptr){
             if(temp[i]->deleted){
